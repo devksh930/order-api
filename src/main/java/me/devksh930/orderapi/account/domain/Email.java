@@ -21,7 +21,7 @@ public class Email {
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    public Email(String email) {
+    public Email(final String email) {
         if (!PATTERN.matcher(email).matches()) {
             throw new IllegalArgumentException(ERR_MSG);
         }

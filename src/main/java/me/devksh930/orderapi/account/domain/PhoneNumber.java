@@ -21,7 +21,7 @@ public class PhoneNumber {
     @Column(name = "phone_number", nullable = false, length = 20)
     private String phoneNumber;
 
-    public PhoneNumber(String phoneNumber) {
+    public PhoneNumber(final String phoneNumber) {
         if (!PATTERN.matcher(phoneNumber).matches()) {
             throw new IllegalArgumentException(ERR_MSG);
         }

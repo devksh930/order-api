@@ -11,7 +11,6 @@ import javax.persistence.*;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false)
     private Long id;
 
     @Embedded
@@ -34,7 +33,7 @@ public class Account {
 
 
     @Builder
-    public Account(String name, String nickname, String email, String phoneNumber, String password, PasswordEncoder passwordEncoder, AccountGender accountGender) {
+    public Account(final String name, final String nickname, final String email, final String phoneNumber, final String password, final PasswordEncoder passwordEncoder, final AccountGender accountGender) {
         this.name = new Name(name);
         this.nickname = new Nickname(nickname);
         this.email = new Email(email);

@@ -12,20 +12,22 @@ import javax.persistence.*;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id",nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(name = "name",nullable = false,length = 20)
+    @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    @Column(name = "nickname",nullable = false,length = 30)
+    @Column(name = "nickname", nullable = false, length = 30)
     private String nickname;
 
-    @Column(name = "password",nullable = false,length = 20)
+    @Column(name = "password", nullable = false, length = 20)
     private String password;
-    @Column(name = "phonenumber",nullable = false,length = 20)
+
+    @Column(name = "phonenumber", nullable = false, length = 20)
     private String phoneNumber;
-    @Column(name = "email",nullable = false,length = 100)
+
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
     @Enumerated(EnumType.STRING)

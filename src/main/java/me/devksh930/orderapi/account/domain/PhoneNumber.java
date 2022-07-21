@@ -14,17 +14,17 @@ import java.util.regex.Pattern;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PhoneNumber {
-    public static final String REGEX = "^[0-9]{20}$";
-    public static final String ERR_MSG = "전화번호는 20자리의 숫자만 입력이 가능합니다";
+    public static final String REGEX = "^\\d{9,20}$";
+    public static final String ERR_MSG = "전화번호는 9자리 이상 20자리의 숫자만 입력이 가능합니다";
     private static final Pattern PATTERN = Pattern.compile(REGEX);
 
     @Column(name = "phone_number", nullable = false, length = 20)
     private String phoneNumber;
 
     public PhoneNumber(String phoneNumber) {
-//        if (!PATTERN.matcher(phoneNumber).matches()) {
-//            throw new IllegalArgumentException(ERR_MSG);
-//        }
+        if (!PATTERN.matcher(phoneNumber).matches()) {
+            throw new IllegalArgumentException(ERR_MSG);
+        }
         this.phoneNumber = phoneNumber;
     }
 }

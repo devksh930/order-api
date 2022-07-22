@@ -1,47 +1,72 @@
 package me.devksh930.orderapi.account.domain;
 
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
 @NoArgsConstructor
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id",nullable = false)
     private Long id;
 
-    @Column(name = "name",nullable = false,length = 20)
-    private String name;
+    @Embedded
+    private Name name;
 
-    @Column(name = "nickname",nullable = false,length = 30)
-    private String nickname;
+    @Embedded
+    private Nickname nickname;
 
-    @Column(name = "password",nullable = false,length = 20)
-    private String password;
-    @Column(name = "phonenumber",nullable = false,length = 20)
-    private String phoneNumber;
-    @Column(name = "email",nullable = false,length = 100)
-    private String email;
+    @Embedded
+    private Password password;
+
+    @Embedded
+    private PhoneNumber phoneNumber;
+
+    @Embedded
+    private Email email;
 
     @Enumerated(EnumType.STRING)
     private AccountGender accountGender;
 
-    private enum AccountGender {
-        MALE, FEMALE, NONE
-    }
 
     @Builder
-    public Account(String name, String nickname, String email, String phoneNumber, String password, AccountGender accountGender) {
-        this.name = name;
-        this.nickname = nickname;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.accountGender = accountGender;
+    public Account(final String name, final String nickname, final String email, final String phoneNumber, final String password, final PasswordEncoder passwordEncoder, final String accountGender) {
+        this.name = new Name(name);
+        this.nickname = new Nickname(nickname);
+        this.email = new Email(email);
+        this.phoneNumber = new PhoneNumber(phoneNumber);
+        this.password = new Password(password, passwordEncoder);
+        this.accountGender = AccountGender.of(accountGender);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name.getName();
+    }
+
+    public String getNickname() {
+        return nickname.getNickname();
+    }
+
+    public String getPassword() {
+        return password.getPassword();
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber.getPhoneNumber();
+    }
+
+    public String getEmail() {
+        return email.getEmail();
+    }
+
+    public AccountGender getAccountGender() {
+        return accountGender;
     }
 }

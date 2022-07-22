@@ -33,13 +33,13 @@ public class Account {
 
 
     @Builder
-    public Account(final String name, final String nickname, final String email, final String phoneNumber, final String password, final PasswordEncoder passwordEncoder, final AccountGender accountGender) {
+    public Account(final String name, final String nickname, final String email, final String phoneNumber, final String password, final PasswordEncoder passwordEncoder, final String accountGender) {
         this.name = new Name(name);
         this.nickname = new Nickname(nickname);
         this.email = new Email(email);
         this.phoneNumber = new PhoneNumber(phoneNumber);
         this.password = new Password(password, passwordEncoder);
-        this.accountGender = accountGender;
+        this.accountGender = AccountGender.of(accountGender);
     }
 
     public Long getId() {

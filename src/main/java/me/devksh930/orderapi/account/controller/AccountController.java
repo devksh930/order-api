@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -20,7 +21,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping
-    public ResponseEntity<AccountResponse> create(@RequestBody final AccountRequest accountRequest) {
+    public ResponseEntity<AccountResponse> create(@Valid @RequestBody final AccountRequest accountRequest) {
         AccountResponse accountResponse = accountService.create(accountRequest);
         URI uri = URI.create("/api/users/" + accountResponse.getId());
         return ResponseEntity.created(uri).body(accountResponse);

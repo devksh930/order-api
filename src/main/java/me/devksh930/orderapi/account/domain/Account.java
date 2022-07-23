@@ -31,15 +31,25 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private AccountGender accountGender;
 
+    @Enumerated(EnumType.STRING)
+    private AccountRole accountRole;
 
     @Builder
-    public Account(final String name, final String nickname, final String email, final String phoneNumber, final String password, final PasswordEncoder passwordEncoder, final String accountGender) {
+    public Account(final String name,
+                   final String nickname,
+                   final String email,
+                   final String phoneNumber,
+                   final String password,
+                   final PasswordEncoder passwordEncoder,
+                   final String accountGender) {
+
         this.name = new Name(name);
         this.nickname = new Nickname(nickname);
         this.email = new Email(email);
         this.phoneNumber = new PhoneNumber(phoneNumber);
         this.password = new Password(password, passwordEncoder);
         this.accountGender = AccountGender.of(accountGender);
+        this.accountRole = AccountRole.ROLE_USER;
     }
 
     public Long getId() {
@@ -68,5 +78,9 @@ public class Account {
 
     public AccountGender getAccountGender() {
         return accountGender;
+    }
+
+    public AccountRole getAccountRole() {
+        return accountRole;
     }
 }

@@ -34,7 +34,7 @@ public class TokenService {
 
     public void tokenValidate(Long accountId, String token) {
         Token redisToken = tokenRepository.findById(accountId)
-                .orElseThrow(() -> new TokenNotFoundException("존재하지 않는 토큰입니다."));
+                .orElseThrow(() -> new BadCredentialsException("존재하지 않는 토큰입니다."));
 
         if (!redisToken.getToken().equals(token)) {
             throw new BadCredentialsException("");

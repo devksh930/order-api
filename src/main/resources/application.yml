@@ -10,9 +10,19 @@ spring:
     url: jdbc:h2:mem:testdb
 
   jpa:
+    open-in-view: false
     show-sql: true
     hibernate:
       ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
+
+
+  redis:
+    port: 6379
+
+app:
+  jwt:
+    secretKey: c81cc9e3bd85b4efa605703f92eb7148fe5394fa68c0fea13834ab5f2ab2adeac6af25b9f07306dec810969176d6d03a538f00c6556fadb6ab212be25c68ca55
+    tokenValidityTime: 21600000 #6시간

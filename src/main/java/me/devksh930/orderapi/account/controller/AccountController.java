@@ -1,14 +1,13 @@
 package me.devksh930.orderapi.account.controller;
 
 import lombok.RequiredArgsConstructor;
+import me.devksh930.orderapi.account.domain.Account;
 import me.devksh930.orderapi.account.dto.AccountRequest;
 import me.devksh930.orderapi.account.dto.AccountResponse;
 import me.devksh930.orderapi.account.service.AccountService;
+import me.devksh930.orderapi.auth.config.annotation.CurrentAccount;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -25,5 +24,10 @@ public class AccountController {
         AccountResponse accountResponse = accountService.create(accountRequest);
         URI uri = URI.create("/api/users/" + accountResponse.getId());
         return ResponseEntity.created(uri).body(accountResponse);
+    }
+
+    @GetMapping
+    public ResponseEntity<AccountResponse> me(@CurrentAccount Account account) {
+        return ResponseEntity.ok(AccountResponse.of(account));
     }
 }

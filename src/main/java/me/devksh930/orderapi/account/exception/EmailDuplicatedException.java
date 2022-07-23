@@ -1,7 +1,10 @@
 package me.devksh930.orderapi.account.exception;
 
-public class EmailDuplicatedException extends RuntimeException{
+import me.devksh930.orderapi.common.ErrorCode;
+import me.devksh930.orderapi.common.exception.BusinessException;
+
+public class EmailDuplicatedException extends BusinessException {
     public EmailDuplicatedException() {
-        super("이미 가입된 메일 입니다.");
+        super(ErrorCode.EMAIL_DUPLICATION);
     }
 }

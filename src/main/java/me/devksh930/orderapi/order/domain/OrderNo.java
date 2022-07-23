@@ -1,4 +1,4 @@
-package me.devksh930.orderapi.orderinfo.domain;
+package me.devksh930.orderapi.order.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;

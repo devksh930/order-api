@@ -1,6 +1,7 @@
 package me.devksh930.orderapi.account.domain;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

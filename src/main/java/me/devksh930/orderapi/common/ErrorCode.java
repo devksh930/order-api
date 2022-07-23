@@ -12,8 +12,10 @@ public enum ErrorCode {
     HANDLE_AUTHENTICATION_ENTRYPOINT(401, "C004", "로그인후 사용가능합니다."),
 
     //ACCOUINT ERROR,
-    EMAIL_DUPLICATION(400, "A001", "이미 존재하는 이메일 입니다.");
+    EMAIL_DUPLICATION(400, "A001", "이미 존재하는 이메일 입니다."),
 
+    //PRODUCT ERROR
+    PRODUCT_NOT_FOUND(404, "P001", "존재하지 않는 상품입니다.");
 
     private final String code;
     private final String message;

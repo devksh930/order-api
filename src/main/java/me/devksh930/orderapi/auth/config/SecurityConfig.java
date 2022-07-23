@@ -48,6 +48,8 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/accounts", "/api/auth")
                 .permitAll()
+                .antMatchers(HttpMethod.GET,"/api/products/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
 

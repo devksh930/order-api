@@ -22,7 +22,7 @@ public class AccountController {
     @PostMapping
     public ResponseEntity<AccountResponse> create(@Valid @RequestBody final AccountRequest accountRequest) {
         AccountResponse accountResponse = accountService.create(accountRequest);
-        URI uri = URI.create("/api/users/" + accountResponse.getId());
+        URI uri = URI.create("/api/accounts/" + accountResponse.getId());
         return ResponseEntity.created(uri).body(accountResponse);
     }
 

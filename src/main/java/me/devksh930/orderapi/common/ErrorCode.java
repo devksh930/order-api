@@ -15,7 +15,12 @@ public enum ErrorCode {
     EMAIL_DUPLICATION(400, "A001", "이미 존재하는 이메일 입니다."),
 
     //PRODUCT ERROR
-    PRODUCT_NOT_FOUND(404, "P001", "존재하지 않는 상품입니다.");
+    PRODUCT_NOT_FOUND(404, "P001", "존재하지 않는 상품입니다."),
+
+    //ORDER
+    PAYMENT_ALREADY(400, "O001", "이미 결제한 상품입니다"),
+    NOT_MY_ORDER(400, "O002", "내가 주문항 상품이 아닙니다"),
+    ORDER_NOT_FOUND(404,"O003" ,"주문 정보를 찾을수 없습니다" );
 
     private final String code;
     private final String message;

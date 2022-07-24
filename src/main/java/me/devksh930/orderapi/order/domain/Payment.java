@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 @Embeddable
@@ -20,4 +21,7 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
+    public static Payment create() {
+        return new Payment(ZonedDateTime.now().withZoneSameInstant(ZoneOffset.UTC));
+    }
 }

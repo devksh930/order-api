@@ -13,6 +13,6 @@ class ProductTest {
                 .build();
 
         assertThat(product).isNotNull();
-        assertThat(product.getProductName().getProductName()).isNotEmpty();
+        assertThat(product.getProductName()).isNotEmpty();
     }
 }

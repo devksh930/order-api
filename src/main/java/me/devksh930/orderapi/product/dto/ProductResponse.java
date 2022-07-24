@@ -19,6 +19,6 @@ public class ProductResponse {
     }
 
     public static ProductResponse of(final Product product) {
-        return new ProductResponse(product.getProductId(), product.getProductName().getProductName(), product.getCreatedDate());
+        return new ProductResponse(product.getProductId(), product.getProductName(), product.getCreatedDate());
     }
 }

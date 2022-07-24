@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'me.devksh930'
@@ -22,7 +23,7 @@ dependencies {
 
     //redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation ('it.ozimov:embedded-redis:0.7.3'){ exclude group: "org.slf4j", module: "slf4j-simple" }
+    implementation('it.ozimov:embedded-redis:0.7.3') { exclude group: "org.slf4j", module: "slf4j-simple" }
 
     // jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
@@ -34,6 +35,26 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+def generatedQuerydslDir = 'build/generated/querydsl'
+
+querydsl {
+    library = 'com.querydsl:querydsl-apt'  // 이거 해주면 4.1.4 사라짐
+    jpa = true
+    querydslSourcesDir = generatedQuerydslDir
+}
+
+sourceSets {
+    main.java.srcDirs += [generatedQuerydslDir]
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath  // 오타 주의: complieClasspath 이렇게 오타치면 망함
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
 }
 
 tasks.named('test') {

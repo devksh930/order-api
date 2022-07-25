@@ -1,8 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
     id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+    id 'java'
 }
 
 group = 'me.devksh930'
@@ -24,11 +24,16 @@ dependencies {
     //redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation('it.ozimov:embedded-redis:0.7.3') { exclude group: "org.slf4j", module: "slf4j-simple" }
+    implementation 'mysql:mysql-connector-java:8.0.29'
 
     // jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    
+    //queryDSL
+    implementation "com.querydsl:querydsl-jpa:5.0.0"
+    implementation "com.querydsl:querydsl-apt:5.0.0"
 
     runtimeOnly 'com.h2database:h2'
 
@@ -40,7 +45,7 @@ dependencies {
 def generatedQuerydslDir = 'build/generated/querydsl'
 
 querydsl {
-    library = 'com.querydsl:querydsl-apt'  // 이거 해주면 4.1.4 사라짐
+    library = 'com.querydsl:querydsl-apt'
     jpa = true
     querydslSourcesDir = generatedQuerydslDir
 }
@@ -50,7 +55,7 @@ sourceSets {
 }
 
 configurations {
-    querydsl.extendsFrom compileClasspath  // 오타 주의: complieClasspath 이렇게 오타치면 망함
+    querydsl.extendsFrom compileClasspath
 }
 
 compileQuerydsl {

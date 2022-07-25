@@ -13,7 +13,7 @@ public class AccountResponse {
     private final String email;
     private final AccountGender accountGender;
 
-    private AccountResponse(final Long id, final String name, final String nickname, final String phoneNumber, final String email, final AccountGender accountGender) {
+    public AccountResponse(final Long id, final String name, final String nickname, final String phoneNumber, final String email, final AccountGender accountGender) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;

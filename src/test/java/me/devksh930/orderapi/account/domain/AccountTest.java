@@ -1,5 +1,6 @@
 package me.devksh930.orderapi.account.domain;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,6 +11,7 @@ class AccountTest {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Test
+    @DisplayName("계정 생성")
     void createAccount() {
         Account account = Account.builder()
                 .name("이름")

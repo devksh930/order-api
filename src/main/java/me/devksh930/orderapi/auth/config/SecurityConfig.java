@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig {
@@ -48,7 +48,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/accounts", "/api/auth")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/api/products/**")
+                .antMatchers(HttpMethod.GET,"/api/products/**","/api/admin/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

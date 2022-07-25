@@ -1,15 +1,13 @@
-package me.devksh930.orderapi.orderinfo.domain;
+package me.devksh930.orderapi.order.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.utility.RandomString;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Embeddable
 @Getter
@@ -23,7 +21,7 @@ public class OrderNo implements Serializable {
     }
 
     public static OrderNo createOrderNumber() {
-        String yyMMdd = LocalDate.now().format(DateTimeFormatter.ofPattern("yyMMdd"));
-        return new OrderNo(yyMMdd + ThreadLocalRandom.current().nextInt(10000, 999999));
+
+        return new OrderNo(RandomString.make(20));
     }
 }

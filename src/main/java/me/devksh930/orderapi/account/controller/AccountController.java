@@ -30,4 +30,5 @@ public class AccountController {
     public ResponseEntity<AccountResponse> me(@CurrentAccount Account account) {
         return ResponseEntity.ok(AccountResponse.of(account));
     }
+
 }

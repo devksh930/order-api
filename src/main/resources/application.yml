@@ -4,15 +4,15 @@ spring:
       path: /h2
       enabled: true
 
-#  datasource:
-#    username: sa
-#    password:
-#    url: jdbc:h2:mem:testdb
   datasource:
-    url: jdbc:mysql://localhost:3306/test
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: spring123
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/test
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: spring123
 
   jpa:
     open-in-view: false

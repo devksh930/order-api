@@ -25,6 +25,7 @@ public class SecurityConfig {
     private final JwtFilter jwtFilter;
     private final JwtAccessDeniedHandler accessDeniedHandler;
     private final JwtAuthenticationEntryPointHandler jwtAuthenticationEntryPointHandler;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -48,8 +49,9 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/accounts", "/api/auth")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/api/products/**","/api/admin/**")
+                .antMatchers(HttpMethod.GET, "/api/products/**")
                 .permitAll()
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
 
@@ -69,7 +71,14 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web -> web.ignoring().antMatchers("/h2/**"));
-    }
+
+        return (web) -> web.ignoring().mvcMatchers(
+                "/h2/**",
+                "/v3/api-docs/**",
+                "/swagger-ui.html/**",
+                "/swagger-ui/**",
+                "/api-docs/**",
+                "/swagger-ui.html"
+        );    }
 
 }

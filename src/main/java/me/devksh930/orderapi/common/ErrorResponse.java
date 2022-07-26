@@ -1,5 +1,6 @@
 package me.devksh930.orderapi.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 public class ErrorResponse {
 
     private String message;
-    @JsonInclude
+    @JsonIgnore
     private int status;
 
     private String code;

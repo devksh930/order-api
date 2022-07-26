@@ -4,7 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import me.devksh930.orderapi.account.domain.Account;
-import me.devksh930.orderapi.account.dto.AccountLastOrderResponse;
+import me.devksh930.orderapi.admin.dto.AccountLastOrderResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;

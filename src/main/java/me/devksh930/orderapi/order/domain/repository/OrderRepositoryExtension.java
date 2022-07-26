@@ -2,8 +2,8 @@ package me.devksh930.orderapi.order.domain.repository;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import me.devksh930.orderapi.admin.dto.AdminOrderInfoResponse;
 import me.devksh930.orderapi.order.domain.OrderInfo;
-import me.devksh930.orderapi.order.dto.AdminOrderInfoResponse;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 

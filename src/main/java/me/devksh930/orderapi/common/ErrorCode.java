@@ -11,6 +11,9 @@ public enum ErrorCode {
     UNAUTHORIZED(401, "C003", "자격증명에 실패 하였습니다"),
     HANDLE_AUTHENTICATION_ENTRYPOINT(401, "C004", "로그인후 사용가능합니다."),
 
+    HANDLE_ACCESS_DENIED(403, "C005", "지원하지 않는 권한입니다."),
+
+
     //ACCOUINT ERROR,
     EMAIL_DUPLICATION(400, "A001", "이미 존재하는 이메일 입니다."),
     ACCOUNT_NOT_FOUND(404,"A002" ,"찾을수 없는 회원 입니다." ),

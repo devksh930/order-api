@@ -5,7 +5,6 @@ import me.devksh930.orderapi.common.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,12 +22,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
 
-    @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<ErrorResponse> handleAuthenticationException(final AuthenticationException e) {
-        log.error("handAuthenticationException", e);
-        final ErrorResponse response = ErrorResponse.of(ErrorCode.UNAUTHORIZED);
-        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
-    }
+//    @ExceptionHandler(AuthenticationException.class)
+//    public ResponseEntity<ErrorResponse> handleAuthenticationException(final AuthenticationException e) {
+//        log.error("handAuthenticationException", e);
+//        final ErrorResponse response = ErrorResponse.of(ErrorCode.UNAUTHORIZED);
+//        return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
+//    }
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleBadCredentialsException(final BadCredentialsException e) {
@@ -52,4 +51,10 @@ public class GlobalExceptionHandler {
         final ErrorResponse response = ErrorResponse.of(errorCode);
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
     }
+//    @ExceptionHandler(AccessDeniedException.class)
+//    protected ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException e) {
+//        log.error("Handle AccessDeniedException ", e);
+//        final ErrorResponse response = ErrorResponse.of(ErrorCode.HANDLE_ACCESS_DENIED);
+//        return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.HANDLE_ACCESS_DENIED.getStatus()));
+//    }
 }

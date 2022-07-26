@@ -1,6 +1,7 @@
 package me.devksh930.orderapi.order.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.v3.oas.annotations.media.Schema;
 import me.devksh930.orderapi.order.domain.OrderInfo;
 
 import java.time.LocalDateTime;
@@ -8,13 +9,20 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class OrderInfoResponse {
+    @Schema(description = "주문번호")
     private final String orderNumber;
+    @Schema(description = "상품명")
     private final String productName;
+    @Schema(description = "주문한 사람의 DB상의 id")
     private final Long ordererId;
+    @Schema(description = "주문한 사람의 email")
     private final String orderEmail;
+    @Schema(description = "결제여부")
     private final boolean payment;
+    @Schema(description = "결제시간 UTC 표준시로 표시")
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final ZonedDateTime paymentDate;
+    @Schema(description = "주문한 시간")
     private final LocalDateTime orderDate;
 
     public OrderInfoResponse(String orderNumber, String productName, Long ordererId, String orderEmail, ZonedDateTime paymentDate, LocalDateTime orderDate) {

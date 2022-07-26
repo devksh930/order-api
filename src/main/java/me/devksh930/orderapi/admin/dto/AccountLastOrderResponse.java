@@ -1,4 +1,4 @@
-package me.devksh930.orderapi.account.dto;
+package me.devksh930.orderapi.admin.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.devksh930.orderapi.account.domain.Account;
 import me.devksh930.orderapi.account.domain.AccountGender;
-import me.devksh930.orderapi.order.dto.AdminOrderInfoResponse;
 
 @Getter
 @Slf4j

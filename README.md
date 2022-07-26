@@ -17,6 +17,11 @@
 ```shell
 java -jar build/libs/order-api-0.0.1-SNAPSHOT.jar
 ```
+### Swagger 
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
 ## API 명세
 ## 로그인
 
